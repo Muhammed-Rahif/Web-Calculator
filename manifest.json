@@ -1,7 +1,7 @@
 {
     "short_name": "Calculator",
     "name": "Web Calculator by Rahif",
-    "start_url": ".",
+    "start_url": "/Web-Calculator/",
     "icons": [
       {
         "src": "./images/icon64.png",

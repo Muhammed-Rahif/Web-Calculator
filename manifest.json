@@ -1,20 +1,21 @@
 {
-    "short_name": "Calculator",
-    "name": "Web Calculator by Rahif",
-    "start_url": "/Web-Calculator/",
-    "icons": [
-      {
-        "src": "./images/icon64.png",
-        "type": "image/png",
-        "sizes": "64x64"
-      },
-      {
-        "src": "./images/icon512.png",
-        "type": "image/png",
-        "sizes": "512x512"
-      }
-    ],
-    "background_color": "#000000",
-    "display": "fullscreen",
-    "theme_color": "#575757"
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "fullscreen",
+  "start_url": "/Web-Calculator/",
+  "name": "Web Calculator",
+  "short_name": "Calculator",
+  "description": "This is a Web Calculator ",
+  "icons": [
+    {
+      "src": "./images/icon64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "./images/icon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }

@@ -1,35 +1,75 @@
-// On install - caching the application shell
-self.addEventListener('install', function(event) {
-    event.waitUntil(
-      caches.open('sw-cache').then(function(cache) {
-        // cache any static files that make up the application shell
-        return cache.addAll(
-            [
-                "/index.html",
-                "/app.js",
-                "/script.js",
-                "/images/icon64.png",
-                "/images/icon512.png",
-                "https://code.jquery.com/jquery-3.2.1.slim.min.js",
-                "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js",
-                "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
-                "https://kit.fontawesome.com/4f7f0e7aa6.js",
-                "https://img.icons8.com/pastel-glyph/2x/calculator.png",
-                "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
-                "/manifest.json"
-            ]
-        );
-      })
-    );
-  });
-  
-  // On network request
-  self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      // Try the cache
-      caches.match(event.request).then(function(response) {
-        //If response found return it, else fetch again
-        return response || fetch(event.request);
-      })
-    );
-  });
+// Workbox import statement
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/6.1.1/workbox-sw.js");
+var staticAssets = [
+  "./index.html",
+  "./app.js",
+  "./script.js",
+  "./images/icon64.png",
+  "./images/icon512.png",
+];
+workbox.precaching.precache(staticAssets);
+workbox.routing.registerRoute(
+  /.*\.(css)/,
+  new workbox.strategies.CacheFirst({
+    cacheName: "web-calculator-stylesheets",
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7, // cache for one week
+        maxEntries: 20, // only cache 20 request
+        purgeOnQuotaError: true,
+      }),
+    ],
+  })
+);
+workbox.routing.registerRoute(
+  /.*\.(js)/,
+  new workbox.strategies.CacheFirst({
+    cacheName: "web-calculator-Javascripts",
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7, // cache for one week
+        maxEntries: 20, // only cache 20 request
+        purgeOnQuotaError: true,
+      }),
+    ],
+  })
+);
+workbox.routing.registerRoute(
+  /.*\.(ttf|woff)/,
+  new workbox.strategies.CacheFirst({
+    cacheName: "web-calculator-Fonts",
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7, // cache for one week
+        maxEntries: 20, // only cache 20 request
+        purgeOnQuotaError: true,
+      }),
+    ],
+  })
+);
+workbox.routing.registerRoute(
+  /.*\.(html)/,
+  new workbox.strategies.CacheFirst({
+    cacheName: "web-calculator-html-documents",
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7,
+        maxEntries: 50,
+        purgeOnQuotaError: true,
+      }),
+    ],
+  })
+);
+workbox.routing.registerRoute(
+  /.*\.(png|jpg|jpeg|gif)/,
+  new workbox.strategies.CacheFirst({
+    cacheName: "web-calculator-image-documents",
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7,
+        maxEntries: 50,
+        purgeOnQuotaError: true,
+      }),
+    ],
+  })
+);

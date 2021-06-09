@@ -34,7 +34,8 @@ function Main() {
         operation.charAt(operation.length - 1) === "+" ||
         operation.charAt(operation.length - 1) === "-" ||
         operation.charAt(operation.length - 1) === "*" ||
-        operation.charAt(operation.length - 1) === "/"
+        operation.charAt(operation.length - 1) === "/" ||
+        operation.charAt(operation.length - 1) === "="
       ) {
       } else {
         setOperation(operation + innerBtn);
@@ -60,6 +61,8 @@ function Main() {
           setOperation(operation + innerBtn);
         }
       }
+    }else if(operation.charAt(operation.length - 1) === "=" && operation.length === 2){
+      setOperation(operation.slice(0, -1) + innerBtn);
     } else {
       if (operation.charAt(operation.length - 1) === "=") {
         setOperation(innerBtn);

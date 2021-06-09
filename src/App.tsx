@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./App.css";
 import Home from "./pages/Home";
 
 function App() {
   return (
-    <React.Fragment>
+    <div className="app">
       <Home />
-    </React.Fragment>
+    </div>
   );
 }
 

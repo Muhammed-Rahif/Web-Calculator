@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import Main from "../components/Main";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Home() {
   return (
-    <div>
+    <React.Fragment>
       <Main />
-    </div>
+    </React.Fragment>
   );
 }
 

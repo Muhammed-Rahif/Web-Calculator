@@ -1,14 +1,14 @@
-import React,{ useContext, useState } from "react";
+import React,{ useState,ReactNode } from "react";
 
 interface props{
-  children : React.ReactNode,
+  children : ReactNode,
 }
 
-export default function Contexts(props : props) : React.ReactNode{
+export default function Contexts(props : props) : ReactNode{
   const [state, setState] = useState();
 
   return (
-      <div>
+      <div className="m">
           {props.children}
       </div>
   );

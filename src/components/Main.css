@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+.full-height {
+  height: 100vh !important;
+}
+.calculator {
+  height: 95vh;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.75);
+  font-family: "Rubik", sans-serif;
+}
+.status-bar {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: flex-start;
+  padding-right: calc(var(--bs-gutter-x) / 2);
+  padding-left: calc(var(--bs-gutter-x) / 2);
+  margin-top: var(--bs-gutter-y);
+  z-index: 99;
+}
+.wifi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.battery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calcualtor-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.results {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding-bottom: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transition: 0.5s;
+}
+.operations {
+  display: flex;
+  color: #28282b;
+  padding-right: 1rem;
+  font-size: 1.5rem;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex: 1;
+}
+.result {
+  color: #28282b;
+  padding-right: 1rem;
+  display: flex;
+  font-size: 4rem;
+  font-weight: 400;
+  font-family: "Rubik", sans-serif;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.buttons {
+  flex: 3;
+  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
+}
+.buttons .btn-row {
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+.buttons .btn-row button.equal {
+  background: #dddd00;
+}
+.buttons .btn-row button.equal:hover {
+  background: #dddd00;
+}
+.buttons .btn-row button.equal:focus {
+  background: #dddd00;
+  background: linear-gradient(to top, rgba(221, 221, 0, 0.6), rgb(200, 200, 0));
+}
+.buttons .btn-row button.operator {
+  background: #777;
+}
+.buttons .btn-row button.operator:hover {
+  background: #777;
+}
+.buttons .btn-row button.operator:focus {
+  background: #777;
+  background: linear-gradient(
+    to top,
+    rgba(119, 119, 119, 0.8),
+    rgba(119, 119, 119, 1)
+  );
+}
+.buttons .btn-row button {
+  flex-grow: 1;
+  background: rgb(246, 246, 246);
+  transition: 0.3s;
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  font-weight: 200;
+}
+.buttons .btn-row button:hover {
+  flex-grow: 1;
+  background: rgb(240, 240, 240);
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+}
+.buttons .btn-row button:focus {
+  flex-grow: 1;
+  background: linear-gradient(to top, rgb(240, 240, 240), rgb(215, 215, 215));
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+}
+
+@media (max-width: 767px) {
+  .full-height {
+    height: 100% !important;
+  }
+  .calculator-body {
+    height: 100% !important;
+  }
+}

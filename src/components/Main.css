@@ -134,4 +134,10 @@
   .calculator-body {
     height: 100% !important;
   }
+  .app{
+    height: 100vh !important;
+  }
+  .calculator{
+    height: 100vh !important;
+  }
 }

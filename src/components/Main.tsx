@@ -26,44 +26,78 @@ function Main() {
 
   var handleBtnClick = (innerBtn: string): void => {
     if (innerBtn === "backspace") {
+      // Backspace operation
       setOperation(operation.slice(0, -1));
     } else if (innerBtn === "clear") {
+      // Clear opertation
       setOperation("");
-    } else if (innerBtn === "=") {
+    } else if (operation.charAt(operation.length - 1) === ".") {
+      // If current operation ending with "."
       if (
+        innerBtn === "=" ||
+        innerBtn === "+" ||
+        innerBtn === "-" ||
+        innerBtn === "*" ||
+        innerBtn === "/"
+      ) {
+      } else {
+        setOperation(operation + innerBtn);
+      }
+    } else if (innerBtn === "=") {
+      // Equal button operation
+      if (
+        // Checking that is the existing operation is ending with a operator
         operation.charAt(operation.length - 1) === "+" ||
         operation.charAt(operation.length - 1) === "-" ||
         operation.charAt(operation.length - 1) === "*" ||
         operation.charAt(operation.length - 1) === "/" ||
         operation.charAt(operation.length - 1) === "="
       ) {
+        // if it ending with operator nothing to do
       } else {
+        // Otherwise
         setOperation(operation + innerBtn);
         setResult(eval(operation));
       }
     } else if (
+      // Checking that is the existing operation is ending with a operator
       operation.charAt(operation.length - 1) === "+" ||
       operation.charAt(operation.length - 1) === "-" ||
       operation.charAt(operation.length - 1) === "*" ||
       operation.charAt(operation.length - 1) === "/"
     ) {
       if (
+        // If existing operation ending with operator replacing that operator with new operator
         innerBtn === "+" ||
         innerBtn === "-" ||
         innerBtn === "*" ||
         innerBtn === "/"
       ) {
         setOperation(operation.slice(0, -1) + innerBtn);
+      } else if (
+        (operation.charAt(operation.length - 1) === "*" &&
+          operation.length === 1) ||
+        (operation.charAt(operation.length - 1) === "/" &&
+          operation.length === 1)
+      ) {
+        setOperation(operation.slice(0, -1) + innerBtn);
       } else {
+        // Checking that operation is ending with equal the replacing the whole operation and starting a new one
         if (operation.charAt(operation.length - 1) === "=") {
           setOperation(innerBtn);
         } else {
+          // Otherwise
           setOperation(operation + innerBtn);
         }
       }
-    }else if(operation.charAt(operation.length - 1) === "=" && operation.length === 2){
+    } else if (
+      operation.charAt(operation.length - 1) === "=" &&
+      operation.length === 2
+    ) {
+      // If the operation like this :- [0-9] =
       setOperation(operation.slice(0, -1) + innerBtn);
     } else {
+      // Last case here
       if (operation.charAt(operation.length - 1) === "=") {
         setOperation(innerBtn);
       } else {
